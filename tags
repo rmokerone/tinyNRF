@@ -1,0 +1,203 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AVRDUDE	Makefile	/^AVRDUDE = avrdude$/;"	m
+AVRDUDE	bak/Makefile	/^AVRDUDE = avrdude$/;"	m
+AVRDUDE_FLAGS	Makefile	/^AVRDUDE_FLAGS = -c usbasp -F$/;"	m
+AVRDUDE_FLAGS	bak/Makefile	/^AVRDUDE_FLAGS = -c usbasp -F$/;"	m
+BAUD	bak/uart.h	2;"	d
+BAUD	uart.h	2;"	d
+BAUD_SETTING	bak/uart.h	6;"	d
+BAUD_SETTING	uart.h	6;"	d
+BIT	bak/nRF24L01.h	10;"	d
+BIT	main.h	22;"	d
+BYTE	bak/nRF24L01.h	27;"	d
+CC	Makefile	/^CC             = avr-gcc$/;"	m
+CC	bak/Makefile	/^CC             = avr-gcc$/;"	m
+CD	bak/nRF24L01.h	54;"	d
+CD	nrf24l01.h	39;"	d
+CE	bak/nRF24L01.h	108;"	d
+CE	main.h	31;"	d
+CE_CLR	bak/nRF24L01.h	22;"	d
+CE_CLR	spi.h	18;"	d
+CE_EN	bak/nRF24L01.h	21;"	d
+CE_EN	spi.h	19;"	d
+CLEARBIT	bak/nRF24L01.h	14;"	d
+CLEARBIT	main.h	26;"	d
+CLEARBITS	bak/nRF24L01.h	12;"	d
+CLEARBITS	main.h	24;"	d
+CONFIG	bak/nRF24L01.h	46;"	d
+CONFIG	nrf24l01.h	31;"	d
+CRYSTAL	bak/uart.h	4;"	d
+CRYSTAL	uart.h	4;"	d
+CSN	bak/nRF24L01.h	109;"	d
+CSN	main.h	32;"	d
+CSN_CLR	bak/nRF24L01.h	19;"	d
+CSN_CLR	spi.h	15;"	d
+CSN_EN	bak/nRF24L01.h	17;"	d
+CSN_EN	spi.h	16;"	d
+DEFS	Makefile	/^DEFS           =$/;"	m
+DEFS	bak/Makefile	/^DEFS           =$/;"	m
+DFLAGS	Makefile	/^override LDFLAGS       = -Wl,-Map,$(PRG).map$/;"	m
+DFLAGS	bak/Makefile	/^override LDFLAGS       = -Wl,-Map,$(PRG).map$/;"	m
+EN_AA	bak/nRF24L01.h	47;"	d
+EN_AA	nrf24l01.h	32;"	d
+EN_RXADDR	bak/nRF24L01.h	48;"	d
+EN_RXADDR	nrf24l01.h	33;"	d
+EXTRA_CLEAN_FILES	Makefile	/^EXTRA_CLEAN_FILES       = *.hex *.bin *.srec$/;"	m
+EXTRA_CLEAN_FILES	bak/Makefile	/^EXTRA_CLEAN_FILES       = *.hex *.bin *.srec$/;"	m
+FIFO_STATUS	bak/nRF24L01.h	68;"	d
+FIFO_STATUS	nrf24l01.h	53;"	d
+FIG2DEV	Makefile	/^FIG2DEV                 = fig2dev$/;"	m
+FIG2DEV	bak/Makefile	/^FIG2DEV                 = fig2dev$/;"	m
+FLAGS	Makefile	/^override CFLAGS        = -g -Wall $(OPTIMIZE) -mmcu=$(MCU_TARGET) $(DEFS)$/;"	m
+FLAGS	bak/Makefile	/^override CFLAGS        = -g -Wall $(OPTIMIZE) -mmcu=$(MCU_TARGET) $(DEFS)$/;"	m
+FLUSH_RX	bak/nRF24L01.h	40;"	d
+FLUSH_RX	nrf24l01.h	25;"	d
+FLUSH_TX	bak/nRF24L01.h	39;"	d
+FLUSH_TX	nrf24l01.h	24;"	d
+F_CPU	bak/main.c	3;"	d	file:
+F_CPU	bak/nRF24L01.h	3;"	d
+F_CPU	main.h	13;"	d
+IRQ	bak/nRF24L01.h	113;"	d
+IRQ	main.h	36;"	d
+LIBS	Makefile	/^LIBS           =$/;"	m
+LIBS	bak/Makefile	/^LIBS           =$/;"	m
+MCU_TARGET	Makefile	/^MCU_TARGET     = atmega88$/;"	m
+MCU_TARGET	bak/Makefile	/^MCU_TARGET     = atmega88$/;"	m
+MISO	bak/nRF24L01.h	111;"	d
+MISO	main.h	34;"	d
+MOSI	bak/nRF24L01.h	110;"	d
+MOSI	main.h	33;"	d
+NOP	bak/nRF24L01.h	42;"	d
+NOP	nrf24l01.h	27;"	d
+OBJ	Makefile	/^OBJ            = main.o uart.o spi.o nrf24l01.o$/;"	m
+OBJ	bak/Makefile	/^OBJ            = main.o uart.o nRF24L01.o$/;"	m
+OBJCOPY	Makefile	/^OBJCOPY        = avr-objcopy$/;"	m
+OBJCOPY	bak/Makefile	/^OBJCOPY        = avr-objcopy$/;"	m
+OBJDUMP	Makefile	/^OBJDUMP        = avr-objdump$/;"	m
+OBJDUMP	bak/Makefile	/^OBJDUMP        = avr-objdump$/;"	m
+OPTIMIZE	Makefile	/^OPTIMIZE       = -O2$/;"	m
+OPTIMIZE	bak/Makefile	/^OPTIMIZE       = -O2$/;"	m
+PRG	Makefile	/^PRG            = main$/;"	m
+PRG	bak/Makefile	/^PRG            = main$/;"	m
+RD_RX_PLOAD	bak/nRF24L01.h	37;"	d
+RD_RX_PLOAD	nrf24l01.h	22;"	d
+READ_REG	bak/nRF24L01.h	35;"	d
+READ_REG	nrf24l01.h	20;"	d
+REUSE_TX_PL	bak/nRF24L01.h	41;"	d
+REUSE_TX_PL	nrf24l01.h	26;"	d
+RF_CH	bak/nRF24L01.h	51;"	d
+RF_CH	nrf24l01.h	36;"	d
+RF_SETUP	bak/nRF24L01.h	52;"	d
+RF_SETUP	nrf24l01.h	37;"	d
+RX_ADDR_P0	bak/nRF24L01.h	55;"	d
+RX_ADDR_P0	nrf24l01.h	40;"	d
+RX_ADDR_P1	bak/nRF24L01.h	56;"	d
+RX_ADDR_P1	nrf24l01.h	41;"	d
+RX_ADDR_P2	bak/nRF24L01.h	57;"	d
+RX_ADDR_P2	nrf24l01.h	42;"	d
+RX_ADDR_P3	bak/nRF24L01.h	58;"	d
+RX_ADDR_P3	nrf24l01.h	43;"	d
+RX_ADDR_P4	bak/nRF24L01.h	59;"	d
+RX_ADDR_P4	nrf24l01.h	44;"	d
+RX_ADDR_P5	bak/nRF24L01.h	60;"	d
+RX_ADDR_P5	nrf24l01.h	45;"	d
+RX_PW_P0	bak/nRF24L01.h	62;"	d
+RX_PW_P0	nrf24l01.h	47;"	d
+RX_PW_P1	bak/nRF24L01.h	63;"	d
+RX_PW_P1	nrf24l01.h	48;"	d
+RX_PW_P2	bak/nRF24L01.h	64;"	d
+RX_PW_P2	nrf24l01.h	49;"	d
+RX_PW_P3	bak/nRF24L01.h	65;"	d
+RX_PW_P3	nrf24l01.h	50;"	d
+RX_PW_P4	bak/nRF24L01.h	66;"	d
+RX_PW_P4	nrf24l01.h	51;"	d
+RX_PW_P5	bak/nRF24L01.h	67;"	d
+RX_PW_P5	nrf24l01.h	52;"	d
+SCK	bak/nRF24L01.h	112;"	d
+SCK	main.h	35;"	d
+SETBIT	bak/nRF24L01.h	13;"	d
+SETBIT	main.h	25;"	d
+SETBITS	bak/nRF24L01.h	11;"	d
+SETBITS	main.h	23;"	d
+SETUP_AW	bak/nRF24L01.h	49;"	d
+SETUP_AW	nrf24l01.h	34;"	d
+SETUP_RETR	bak/nRF24L01.h	50;"	d
+SETUP_RETR	nrf24l01.h	35;"	d
+SPI_CLR_Reg	bak/nRF24L01.c	/^void SPI_CLR_Reg(BYTE R_T)$/;"	f
+SPI_Init	bak/nRF24L01.c	/^void SPI_Init(void)     \/\/ Init SPI $/;"	f
+SPI_RW	bak/nRF24L01.c	/^uchar SPI_RW(BYTE byte)         \/\/ Single SPI read\/write$/;"	f
+SPI_RW_Reg	bak/nRF24L01.c	/^uchar SPI_RW_Reg(BYTE reg, BYTE value)   \/\/ Read one byte from nRF24L01$/;"	f
+SPI_Read	bak/nRF24L01.c	/^BYTE SPI_Read(BYTE reg)$/;"	f
+SPI_Read_Buf	bak/nRF24L01.c	/^uchar SPI_Read_Buf(BYTE reg, BYTE *pBuf, BYTE bytes)$/;"	f
+SPI_Write_Buf	bak/nRF24L01.c	/^uchar SPI_Write_Buf(BYTE reg, BYTE *pBuf, BYTE bytes)$/;"	f
+STATUS	bak/nRF24L01.h	53;"	d
+STATUS	nrf24l01.h	38;"	d
+STA_MARK_MX	bak/nRF24L01.h	71;"	d
+STA_MARK_MX	nrf24l01.h	56;"	d
+STA_MARK_RX	bak/nRF24L01.h	69;"	d
+STA_MARK_RX	nrf24l01.h	54;"	d
+STA_MARK_TX	bak/nRF24L01.h	70;"	d
+STA_MARK_TX	nrf24l01.h	55;"	d
+TX_ADDR	bak/nRF24L01.h	61;"	d
+TX_ADDR	nrf24l01.h	46;"	d
+TX_ADDRESS	bak/main.c	/^unsigned char TX_ADDRESS[TX_ADR_WIDTH] = {0x34, 0x43, 0x10, 0x10, 0x01};$/;"	v
+TX_ADDRESS	main.c	/^uchar TX_ADDRESS[TX_ADR_WIDTH] = {0x34, 0x43, 0x10, 0x10, 0x01};$/;"	v
+TX_ADR_WIDTH	bak/nRF24L01.h	30;"	d
+TX_ADR_WIDTH	nrf24l01.h	15;"	d
+TX_PLOAD_WIDTH	bak/nRF24L01.h	32;"	d
+TX_PLOAD_WIDTH	nrf24l01.h	17;"	d
+WRITE_REG	bak/nRF24L01.h	36;"	d
+WRITE_REG	nrf24l01.h	21;"	d
+WR_TX_PLOAD	bak/nRF24L01.h	38;"	d
+WR_TX_PLOAD	nrf24l01.h	23;"	d
+_BYTE_DEF_	bak/nRF24L01.h	25;"	d
+__MAIN_H__	main.h	8;"	d
+__NRF24L01_H__	nrf24l01.h	9;"	d
+__SPI_H__	spi.h	8;"	d
+checkId	nrf24l01.c	/^void checkId(void)$/;"	f
+enterRxMode	nrf24l01.c	/^void enterRxMode(uchar* rxAddr)$/;"	f
+enterTxMode	nrf24l01.c	/^void enterTxMode(uchar * txAddr, uchar* txBuf)$/;"	f
+flag	bak/nRF24L01.h	/^uchar flag;$/;"	v
+flushAll	nrf24l01.c	/^void flushAll(void)$/;"	f
+flushRT	nrf24l01.c	/^void flushRT(uchar RT)$/;"	f
+ifnnrf_CLERN_ALL	bak/nRF24L01.c	/^void ifnnrf_CLERN_ALL()$/;"	f
+ifnnrf_rx_mode	bak/nRF24L01.c	/^void ifnnrf_rx_mode(unsigned char * TX_ADDRESS)$/;"	f
+ifnnrf_tx_mode	bak/nRF24L01.c	/^void ifnnrf_tx_mode(unsigned char * TX_ADDRESS)$/;"	f
+init_nrf24l01_io	bak/nRF24L01.c	/^void init_nrf24l01_io(void)$/;"	f
+init_uart	bak/uart.c	/^void init_uart(unsigned int baud)$/;"	f
+logoPrint	main.c	/^void logoPrint(void)$/;"	f
+main	bak/main.c	/^int main (void)$/;"	f
+main	main.c	/^int main (void)$/;"	f
+mystdout	bak/main.c	/^static FILE mystdout = FDEV_SETUP_STREAM (uart_putchar, NULL, _FDEV_SETUP_WRITE);$/;"	v	file:
+mystdout	main.c	/^static FILE mystdout = FDEV_SETUP_STREAM (uartPutchar, NULL, _FDEV_SETUP_WRITE);$/;"	v	file:
+nrfRecv	nrf24l01.c	/^uchar nrfRecv(uchar* rxAddr, uchar* rxBuf)$/;"	f
+nrfSend	nrf24l01.c	/^uchar nrfSend(uchar* txAddr, uchar* txBuf)$/;"	f
+nrf_rx	bak/nRF24L01.c	/^uchar nrf_rx (unsigned char * TX_ADDRESS)$/;"	f
+nrf_tx	bak/nRF24L01.c	/^uchar nrf_tx (unsigned char * TX_ADDRESS)$/;"	f
+powerDown	nrf24l01.c	/^void powerDown(void)$/;"	f
+power_off	bak/nRF24L01.c	/^void power_off()$/;"	f
+printAddr	main.c	/^void printAddr(uchar * souAddr)$/;"	f
+rx_buf	bak/nRF24L01.h	/^uchar rx_buf[TX_PLOAD_WIDTH];$/;"	v
+spiInit	spi.c	/^void spiInit(void)$/;"	f
+spiRead	spi.c	/^uchar spiRead (uchar reg)$/;"	f
+spiRw	spi.c	/^uchar spiRw (uchar byte)$/;"	f
+spiRwReg	spi.c	/^uchar spiRwReg (uchar reg, uchar value)$/;"	f
+spiWriteBuf	spi.c	/^uchar spiWriteBuf (uchar reg, uchar *pBuf, uchar bytes)$/;"	f
+termialInit	main.c	/^void termialInit(void)$/;"	f
+tx_buf	bak/nRF24L01.h	/^uchar tx_buf[TX_PLOAD_WIDTH];\/\/这个应该是发送数据的缓冲区$/;"	v
+uartInit	uart.c	/^void uartInit(unsigned int baud)$/;"	f
+uartPutchar	uart.c	/^int uartPutchar (char c, FILE * stream)$/;"	f
+uart_data	bak/uart.h	/^volatile unsigned char uart_data;$/;"	v
+uart_data	uart.h	/^volatile unsigned char uart_data;$/;"	v
+uart_putchar	bak/uart.c	/^int uart_putchar (char c, FILE * stream)$/;"	f
+uchar	bak/nRF24L01.c	3;"	d	file:
+uchar	bak/nRF24L01.h	28;"	d
+uchar	bak/nRF24L01.h	7;"	d
+uchar	main.h	41;"	d
+uint	main.h	42;"	d
+updateAddr	main.c	/^void updateAddr(uchar* souAddr)$/;"	f
