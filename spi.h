@@ -46,7 +46,13 @@ uchar spiRead (uchar reg);
 /*
  * SPI写入连续的字节
  * 向寄存器地址 reg 中写入 *pBuf 中的字节 bytes 个
+ * 返回读取到的状态值
  */
 uchar spiWriteBuf (uchar reg, uchar *pBuf, uchar bytes);
 
+/*
+ * SPI读取连续的字节
+ * 返回读取到的状态值
+ */
+uchar spiReadBuf (uchar reg, uchar *pBuf, uchar bytes);
 #endif

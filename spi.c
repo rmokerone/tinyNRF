@@ -78,3 +78,20 @@ uchar spiWriteBuf (uchar reg, uchar *pBuf, uchar bytes)
     return (status);
 }
 
+/*
+ * SPI读取连续的字节
+ * 返回读取到的状态值
+ */
+uchar spiReadBuf (uchar reg, uchar *pBuf, uchar bytes)
+{
+    uchar status, bytesCnt;
+
+    CSN_CLR;
+    status = spiRw(reg);
+    for (bytesCnt = 0; bytesCnt < bytes; bytesCnt ++)
+    {
+        *pBuf ++ = spiRw(0xff);
+    }
+    CSN_EN;
+    return status;
+}

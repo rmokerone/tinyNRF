@@ -147,22 +147,35 @@ uchar nrfSend(uchar* txAddr, uchar* txBuf)
  */
 void checkId(void)
 {
-    uchar data0, data1, data2;
-    CSN_CLR;
-    data0 = spiRw(RX_ADDR_P0);
-    data1 = spiRw(RX_ADDR_P1);
-    data2 = spiRw(TX_ADDR);
-    CSN_EN;
+    uchar tmpCnt;
+    uchar p0Addr[TX_ADR_WIDTH];
+    uchar p1Addr[TX_ADR_WIDTH];
+    uchar txAddr[TX_ADR_WIDTH];
 
-    //printf ("P0 = 0x%x\n", data0);
-    //printf ("P1 = 0x%x\n", data1);
-    //printf ("TX = 0x%x\n", data2);
-    if ((data0 == 0x0e)&&
-        (data1 == 0x34)&&
-        (data2 == 0x43))
-        printf ("CheckID OK!");
-    else
-        printf ("CheckID error!");
-    printf ("\n");
+    for (tmpCnt = 0; tmpCnt < TX_ADR_WIDTH; tmpCnt ++)
+    {
+        p0Addr[tmpCnt] = 0;
+        p1Addr[tmpCnt] = 0;
+        txAddr[tmpCnt] = 0;
+    }
+
+    printf ("Checking ID ...\n");
+    
+    powerDown();
+
+    CE_CLR;
+    //这三个寄存器的数值在本芯片中不是固定的
+    //所以不能够用来验证NRF芯片是否工作正常
+    spiReadBuf (READ_REG + RX_ADDR_P0, p0Addr, TX_ADR_WIDTH);
+    spiReadBuf (READ_REG + RX_ADDR_P1, p1Addr, TX_ADR_WIDTH);
+    spiReadBuf (READ_REG + TX_ADDR, txAddr, TX_ADR_WIDTH);
+
+    CE_EN;
+
+    printf ("RX_ADDR_P0 = ");
+    printAddr (p0Addr);
+    printf ("RX_ADDR_P1 = ");
+    printAddr (p1Addr);
+    printf ("TX_ADDR = ");
+    printAddr (txAddr);
 }
-

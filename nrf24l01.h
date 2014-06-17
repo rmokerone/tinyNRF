@@ -12,6 +12,8 @@
 #include "main.h"
 #include "spi.h"
 
+extern void printAddr (uchar *);
+
 #define TX_ADR_WIDTH    5   // 5  bytes TX(RX) address width
 
 #define TX_PLOAD_WIDTH  32  // 32 bytes TX payload
