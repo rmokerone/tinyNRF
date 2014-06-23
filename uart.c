@@ -59,9 +59,14 @@ ISR (USART_RX_vect)
     }
     else
         uartInit (BAUD_SETTING);
-    //printf ("status = %x\n", status);
-    //printf ("uartRecvData = 0x%x\n", uartRecvData);
+    if (mode == TX_MODE)
+    {
+        txBuf[txCnt ++] = uartRecvData;
+        uartRecvData = '\0';
+        printf("%s\n", txBuf);
+        printf ("txCnt = %d\n", txCnt);
+    }
+    printf ("uartRecvData = %c\n", uartRecvData);
     //开启回显方式
-    //printf ("%c", uartRecvData);
 }
 

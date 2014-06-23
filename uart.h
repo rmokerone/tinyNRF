@@ -2,6 +2,8 @@
 #ifndef __UART_H__
 #define __UART_H__
 
+#include "main.h"
+
 //设置波特率
 #define BAUD 9600
 
@@ -26,4 +28,5 @@ unsigned char uartRecvChar (void);
 //定义UART接收到的数据类型为volatile (类型限定词）
 volatile unsigned char uartRecvData;
 
+extern uchar mode;
 #endif

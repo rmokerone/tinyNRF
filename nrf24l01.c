@@ -21,7 +21,7 @@ void powerDown(void)
 /*
  * 进入到Tx发送模式
  */
-void enterTxMode(uchar * txAddr, uchar* txBuf)
+void enterTxMode(uchar * txAddr, volatile uchar* txBuf)
 {
     powerDown();
 
@@ -29,7 +29,7 @@ void enterTxMode(uchar * txAddr, uchar* txBuf)
 
     spiWriteBuf(WRITE_REG + TX_ADDR, txAddr, TX_ADR_WIDTH);
     spiWriteBuf(WRITE_REG + RX_ADDR_P0, txAddr, TX_ADR_WIDTH);
-    spiWriteBuf(WR_TX_PLOAD, txBuf, TX_PLOAD_WIDTH);
+    spiWriteBuf(WR_TX_PLOAD, (uchar *)txBuf, TX_PLOAD_WIDTH);
     
     spiRwReg(WRITE_REG + EN_AA, 0x01);
     spiRwReg(WRITE_REG + EN_RXADDR, 0x01);
@@ -122,13 +122,15 @@ uchar nrfRecv(uchar* rxAddr, uchar* rxBuf)
  * 若成功返回1
  * 若失败返回0
  */
-uchar nrfSend(uchar* txAddr, uchar* txBuf)
+uchar nrfSend(uchar* txAddr, volatile uchar* txBuf)
 {
     uchar txSta, ret;
+    uint iCnt = 0;
     enterTxMode(txAddr, txBuf);
 
-    //接受到数据发送完成中断
-    while (PIND * (1<<IRQ));
+    //接收到数据发送完成中断
+    //或者是超过一定的查询次数
+    while ((PIND * (1<<IRQ)) || (iCnt ++ > 2000));
 
     txSta = spiRw(STATUS);
     spiRwReg(WRITE_REG + STATUS, 0xff);

@@ -65,7 +65,7 @@ void powerDown(void);
 /*
  * 进入到Tx发送模式
  */
-void enterTxMode(uchar * txAddr, uchar* txBuf);
+void enterTxMode(uchar * txAddr, volatile uchar* txBuf);
 
 /*
  * 进入到Rx接收模式
@@ -96,7 +96,7 @@ uchar nrfRecv(uchar* rxAddr, uchar* rxBuf);
  * 若成功返回1
  * 若失败返回0
  */
-uchar nrfSend(uchar* txAddr, uchar* txBuf);
+uchar nrfSend(uchar* txAddr, volatile uchar* txBuf);
 
 /*
  * 读取相关寄存器判断模块是否工作正常

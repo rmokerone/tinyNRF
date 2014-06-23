@@ -28,20 +28,31 @@ void printAddr(uchar * souAddr);
 void getCommand(void);
 
 /*
+ * 获取进入TX或者是RX模式的命令
+ */
+void getRT(void);
+
+/*
  * 输出命令提示信息
  */
-void printCmdRe();
+ void printCmdRe(void);
+
+/*
+ * 输出输入或输出模式选择命令提示信息
+ */
+void printRTRe(void);
 
 /*
  * 地址扫描模块
  */
 uchar scanAddr(void);
 
-//定义数据接收和发送缓冲区
-//uchar txBuf[TX_PLOAD_WIDTH];
-uchar rxBuf[TX_PLOAD_WIDTH];
-//定义数据发送地址
-uchar txAddr[TX_ADR_WIDTH];
+/*
+ * 设置发送或接收的数据地址
+ */
+uchar getAddr(void);
+
+uchar mode = CMD_MODE;
 
 int main (void)
 {
@@ -49,6 +60,7 @@ int main (void)
     uchar ret;
 
     uchar adCnt;
+    uchar iCnt;
     //初始化发送地址
     for (adCnt = 0; adCnt < TX_ADR_WIDTH; adCnt ++)
         txAddr[adCnt] = TX_ADDRESS[adCnt];
@@ -66,15 +78,53 @@ int main (void)
 
     while (1)
     {
-        //输出命令提示信息
-        printCmdRe();
-        //获取命令
-        getCommand();
+        //进入命令模式(默认进入)
+        if (mode == CMD_MODE)
+        {
+            //输出命令提示信息
+            printCmdRe();
+            //获取命令
+            getCommand();
+        }
+        //进入正常模式
+        else if (mode == NOMAL_MODE)
+        {
+            printf ("Enter NOMAL_MODE\n");
+            //输出模式选择选项
+            printRTRe();
+            //等待接收选择的模式
+            getRT();
+        }
+        //进入到数据发送模式
+        else if (mode == TX_MODE)
+        {
+            //发送缓冲区中的数据
+            if (txCnt != 0)
+            {
+                printf ("sendOne\n");
+                nrfSend(txAddr, txBuf);
+                txCnt = 0;
+                for (iCnt = 0; iCnt < TX_PLOAD_WIDTH; iCnt ++)
+                    txBuf[iCnt] = '\0';
+            }
+        }
+        //进入到数据接收模式
+        else if (mode == RX_MODE)
+        {
+            //printf ("Enter RX_MODE\n");
+            //接收数据并放入到缓冲区rxBuf中
+            nrfRecv(txAddr, rxBuf);
+            //将rxBuf中的数据通过串口发送出去
+            if (rxBuf[0] != '\0')
+            {
+                printf ("%s", rxBuf);
+                for (iCnt = 0; iCnt < TX_PLOAD_WIDTH; iCnt++)
+                    rxBuf[iCnt] = '\0';
+            }
+        }
+        else
+            printf ("ERROR: MODE SELECT ERROR!!!\n");
     }
-
-    printf ("Find address =");
-    printAddr (txAddr);
-
     return 0;
 }
 
@@ -87,7 +137,7 @@ int main (void)
  */
  uchar scanAddr(void)
  {
-     uchar  scanCnt;
+    uchar  scanCnt;
     //扫描可用的终端
     printf ("Scaning enable address...\n");
 
@@ -97,6 +147,7 @@ int main (void)
          txAddr [TX_ADR_WIDTH - 1] = scanCnt + 1;
          printf ("Testing address = ");
          printAddr (txAddr);
+         //如果接收到数据则跳出扫描程序
          if (nrfRecv(txAddr, rxBuf))
          {
              printf ("Found Address------");
@@ -111,6 +162,19 @@ int main (void)
 }
 
 /*
+ * 输出输入或输出模式选择命令提示信息
+ */
+void printRTRe(void)
+{
+    printf ("\n");
+    printf ("b : Back CMD MODE\n");
+    printf ("r : Enter RX MODE\n");
+    //printf ("s : Set Rx or Tx address\n");
+    printf ("t : Enter TX MODE\n");
+    printf ("\n");
+}
+
+/*
  * 输出命令提示信息
  */
 void printCmdRe()
@@ -119,7 +183,72 @@ void printCmdRe()
     printf ("c : Check Nrf24L01 moudle OK.\n");
     printf ("s : Scaning enable address.\n");
     printf ("t : Just do an Test.\n");
+    printf ("j : Jump commond mode, enter nomal mode.\n");
     printf ("\n");
+}
+
+/*
+ * 获取进入TX或者是RX模式的命令
+ */
+void getRT(void)
+{
+    while (uartRecvData == '\0');
+
+    switch (uartRecvData)
+    {
+        case 'b':
+            mode = CMD_MODE;
+            break;
+        case 't':
+            while (!getAddr());
+            mode = TX_MODE;
+            break;
+        case 'r':
+            while (!getAddr());
+            mode = RX_MODE;
+            break;
+        default:
+            printf ("ERROR: command error\n");
+    }
+    uartRecvData = '\0';
+}
+
+/*
+ * 设置发送或接收的数据地址 
+ * 此函数以后必定重写，写的太难受了。。。
+ * 里面还存在问题，在输入的值超过输入返回内后
+ * 返回值是将原来的值/255后再设置为通道的地址
+ * 存在问题
+ * 获取数据成功返回1
+ * 获取数据失败返回0
+ */
+uchar getAddr(void)
+{
+    //接收到的通道数据十进制
+    uchar numTmp = 0, loopCnt = 0;
+
+    printf ("Please Enter your chose Address (0~255)\n");
+    printf ("Please Enter : end of input\n");
+    
+    //清空UART数据接收缓存
+    uartRecvData = '\0';
+    
+    for (loopCnt = 0; loopCnt < 4; loopCnt ++)
+    {
+        while (uartRecvData == '\0');
+        if (uartRecvData == ':')
+        {
+            txAddr[TX_ADR_WIDTH - 1] = numTmp;
+            printf ("SUCCESS Set address: ");
+            printAddr(txAddr);
+            return 1;
+        }
+        numTmp = numTmp * 10 + (uartRecvData - 48);
+        uartRecvData = '\0';
+    }
+    printf ("Enter address error.\n");
+    printf ("Please input address again.\n");
+    return 0;
 }
 
 /*
@@ -127,7 +256,7 @@ void printCmdRe()
  */
 void getCommand(void)
 {
-    while (uartRecvData == 0);
+    while (uartRecvData == '\0');
         //printf ("0x%x", uartRecvData);
     switch (uartRecvData)
     {
@@ -138,18 +267,21 @@ void getCommand(void)
         //扫描可用的终端地址
         case 's':
             scanAddr();
-            checkId();
+            //checkId();
             break;
          //测试命令
         case 't':
             printf ("recv a command\n");
+            break;
+        case 'j':
+            mode = NOMAL_MODE;
             break;
         default :
             printf ("ERROR COMMAND: 0x%x\n", uartRecvData);
     }
 
     //清空数据接收缓存
-    uartRecvData = 0;
+    uartRecvData = '\0';
 }
 
 /*

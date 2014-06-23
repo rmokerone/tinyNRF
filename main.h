@@ -36,9 +36,31 @@
 #define IRQ             PD2
 
 /*
+ * 定义模块工作状态
+ */
+#define CMD_MODE        0
+#define NOMAL_MODE      1
+#define TX_MODE         2 
+#define RX_MODE         3
+/*
  * 重命名数据变量
  */
 #define uchar unsigned char
 #define uint  unsigned int
+
+#define TX_ADR_WIDTH    5   // 5  bytes TX(RX) address width
+
+#define TX_PLOAD_WIDTH  32  // 32 bytes TX payload
+
+//nrf数据发送缓冲区
+volatile uchar txBuf[TX_PLOAD_WIDTH];
+//接收到数据位数变量
+volatile uchar txCnt;
+
+//nrf数据接收缓冲区
+uchar rxBuf[TX_PLOAD_WIDTH];
+
+//定义数据发送与接收地址
+uchar txAddr[TX_ADR_WIDTH];
 
 #endif
